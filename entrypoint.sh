@@ -12,7 +12,7 @@ NEW_VERSION="v`grep version $VERSION_FILE | sed 's/.*"version": "\(.*\)".*/\1/'`
 
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-echo ls 
+ls 
 echo "looking for version"
 echo $NEW_VERSION 
 if [[ $EXISTING_VERSIONS == *$NEW_VERSION* ]]; then
