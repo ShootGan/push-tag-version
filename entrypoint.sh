@@ -3,7 +3,7 @@
 
 # Apply hotfix for 'fatal: unsafe repository' 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-#cd "${GITHUB_WORKSPACE}" || exit
+cd "${GITHUB_WORKSPACE}" || exit
 
 #Set variables
 VERSION_FILE="${FILE}:-package.json"
@@ -17,7 +17,7 @@ echo "looking for version"
 echo $NEW_VERSION 
 if [[ $EXISTING_VERSIONS == *$NEW_VERSION* ]]; then
   echo "tag already exists"
-  exitCode 1 
+  exit 1 
 fi
 echo "Creating tag"
 git tag -a "${NEW_VERSION}" -m "realese ${NEW_VERSION}"
