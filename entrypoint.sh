@@ -9,7 +9,7 @@ cd "${GITHUB_WORKSPACE}" || exit
 VERSION_FILE="${FILE:-package.json}"
 EXISTING_VERSIONS=`git tag`
 NEW_VERSION="v`grep version $VERSION_FILE | sed 's/.*"version": "\(.*\)".*/\1/'`"
-if 
+
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
