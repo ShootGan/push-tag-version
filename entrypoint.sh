@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+
 
 # Apply hotfix for 'fatal: unsafe repository' 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
