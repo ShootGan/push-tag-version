@@ -3,7 +3,7 @@
 
 # Apply hotfix for 'fatal: unsafe repository' 
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-cd "${GITHUB_WORKSPACE}" || exit
+#cd "${GITHUB_WORKSPACE}" || exit
 
 #Set variables
 VERSION_FILE="${FILE}:-package.json"
