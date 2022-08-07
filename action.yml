@@ -1,0 +1,13 @@
+name: "Add version tak"
+description: "Creates tag"
+author: "Pawel Nalepka"
+inputs:
+  file:
+    description: "file with version"
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "tag"
+  color: "blue"
