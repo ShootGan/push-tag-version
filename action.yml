@@ -4,7 +4,6 @@ author: "Pawel Nalepka"
 inputs:
   github_token:
     description: "GITHUB_TOKEN. Optional if you use checkout@v2 action."
-    default: "${{ github.token }}"
     required: false
   file:
     description: "file with version"
