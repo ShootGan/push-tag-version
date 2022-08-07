@@ -21,6 +21,9 @@ if [[ $EXISTING_VERSIONS == *$NEW_VERSION* ]]; then
 fi
 echo "Creating tag"
 git tag -a "${NEW_VERSION}" -m "realese ${NEW_VERSION}"
-echo "pusing tag to repository"
+echo "pushing tag to repository"
+if [ -n "${INPUT_GITHUB_TOKEN}" ]; then
+  git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+fi
 git push origin --tags
 echo "tag created"
