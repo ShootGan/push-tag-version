@@ -27,11 +27,8 @@ if [ -z "${GITHUB_TOKEN}" ]; then
   echo "using token"
 fi
 git push origin --tags
-if [$? -eq 0]; then
-echo "tag created"
 exit 0
-fi
-exit 1 
+
 
 
 
