@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - action_js
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add version tag
+        uses: ./
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          file: 'package.json'
+          tag_prefix: 'v'

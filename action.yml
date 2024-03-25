@@ -1,16 +1,25 @@
-name: "Add version tak"
-description: "Creates tag"
+name: "Add version tag"
+description: "Creates tag in reposiotry based on version in file"
 author: "Pawel Nalepka"
 inputs:
   github_token:
     description: "GITHUB_TOKEN. Optional if you use checkout@v2 action."
-    required: false
+    required: true
   file:
     description: "file with version"
+    required: true
+  version_param_regex:
+    description: "regex to extract version from file"
     required: false
+    default: "version: (.*)"
+  tag_prefix:
+    description: "prefix for tag"
+    required: false
+    default: ""
+outputs:
+  tag:
+    description: "tag"
+
 runs:
-  using: "docker"
-  image: "Dockerfile"
-branding:
-  icon: "tag"
-  color: "blue"
+  using: "node20"
+  main: "dist/index.js"

@@ -1,0 +1,16 @@
+{
+  "name": "push-tag-version",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/ShootGan/push-tag-version.git",
+  "author": "ShootGan <nawelpalepka@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "build": "ncc build index.js -o dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vercel/ncc": "^0.38.1"
+  }
+}
