@@ -1,25 +1,25 @@
-name: "Add version tag"
-description: "Creates tag in reposiotry based on version in file"
-author: "Pawel Nalepka"
+name: 'Add version tag'
+description: 'Creates tag in reposiotry based on version in file'
+author: 'Pawel Nalepka'
 inputs:
   github_token:
-    description: "GITHUB_TOKEN. Optional if you use checkout@v2 action."
+    description: 'GITHUB_TOKEN. Optional if you use checkout@v2 action.'
     required: true
-  file:
-    description: "file with version"
+  version_file:
+    description: 'file with version'
     required: true
   version_param_regex:
-    description: "regex to extract version from file"
+    description: 'regex to extract version from file'
     required: false
-    default: "version: (.*)"
+    default: '"version":\\s*"(.*?)"'
   tag_prefix:
-    description: "prefix for tag"
+    description: 'prefix for tag'
     required: false
-    default: ""
+    default: ''
 outputs:
   tag:
-    description: "tag"
+    description: 'tag'
 
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: 'node20'
+  main: 'dist/index.js'
