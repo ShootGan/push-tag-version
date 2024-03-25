@@ -12,5 +12,5 @@ jobs:
         uses: ./
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          file: 'package.json'
+          version_file: 'package.json'
           tag_prefix: 'v'
