@@ -16,6 +16,7 @@ const getFile = (versionFile) => {
 const getVersion = (fileContent, versionRegex) => {
   core.info(`Looking for version`);
   core.debug(`Version regex: ${versionRegex}`);
+  core.debug(`File content: ${fileContent}`);
   const regex = new RegExp(versionRegex, 'g');
   const version = fileContent.match(regex);
   if (!version) {
