@@ -26593,11 +26593,13 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const fs = __nccwpck_require__(7147);
+const path = __nccwpck_require__(1017);
 
 const getFile = (versionFile) => {
   try {
     core.info(`Looking for  ${versionFile}`);
-    var content = fs.readFileSync(versionFile);
+    const currentPath = path.resolve(versionFile);
+    var content = fs.readFileSync(currentPath);
     return content;
   } catch (error) {
     core.setFailed(`Error reading version file: ${error.message}`);

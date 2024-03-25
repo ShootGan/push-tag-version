@@ -1,10 +1,12 @@
 const core = require('@actions/core');
 const fs = require('fs');
+const path = require('path');
 
 const getFile = (versionFile) => {
   try {
     core.info(`Looking for  ${versionFile}`);
-    var content = fs.readFileSync(versionFile);
+    const currentPath = path.resolve(versionFile);
+    var content = fs.readFileSync(currentPath);
     return content;
   } catch (error) {
     core.setFailed(`Error reading version file: ${error.message}`);
