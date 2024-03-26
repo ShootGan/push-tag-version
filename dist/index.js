@@ -26613,7 +26613,7 @@ const getVersion = (fileContent, versionRegex) => {
   const regex = new RegExp(versionRegex, 'g');
   const version = fileContent.match(regex);
   if (!version) {
-    core.debug('regex: ${regex}, version: ${version}');
+    core.debug(`regex: ${regex}, version: ${version}`);
     core.setFailed('Version not found in file');
   }
   core.info(`Found version: ${version}`);

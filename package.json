@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "repository": "https://github.com/ShootGan/push-tag-version.git",
-  "author": "ShootGan <nawelpalepka@gmail.com>",
+  "author": "ShootGan",
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
