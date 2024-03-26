@@ -26599,7 +26599,7 @@ const getFile = (versionFile) => {
   try {
     core.info(`Looking for  ${versionFile}`);
     const currentPath = path.resolve(versionFile);
-    var content = fs.readFileSync(currentPath);
+    var content = fs.readFileSync(currentPath).toString();
     return content;
   } catch (error) {
     core.setFailed(`Error reading version file: ${error.message}`);
