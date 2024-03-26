@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const path = require('path');
+const exec = require('@actions/exec');
 
 const getFile = (versionFile) => {
   try {
@@ -27,7 +28,7 @@ const getVersion = (fileContent, versionRegex) => {
   return version;
 };
 
-const run = async () => {
+const run = () => {
   const githubToken = core.getInput('github_token');
   const versionFile = core.getInput('version_file');
   const versionRegex = core.getInput('version_param_regex');
