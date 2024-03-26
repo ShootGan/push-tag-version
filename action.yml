@@ -11,7 +11,7 @@ inputs:
   version_param_regex:
     description: 'regex to extract version from file'
     required: false
-    default: '"version":\s*"(.*?)"'
+    default: '"version":\s*"(\d+\.\d+\.\d+)"'
   tag_prefix:
     description: 'prefix for tag'
     required: false
