@@ -41,6 +41,8 @@ const getGitTags = async () => {
       gitError += data.toString();
     },
   };
+
+  await exec.exec('git', ['fetch', '--prune', 'unshallow', '--tags'], options);
   await exec.exec('git', ['tag'], options);
   core.info(`Git tags: ${gitTags}`);
   core.info(`Git error: ${gitError}`);
