@@ -45,12 +45,12 @@ const getGitTags = async () => {
   await exec.exec('git', ['fetch', '--prune', '--unshallow', '--tags'], options);
   await exec.exec('git', ['tag'], options);
   core.debug(`Tags: ${gitTags}`);
-  return gitTags.toString();
+  return gitTags;
 };
 
-const checkTag = (tagToAdd, currentTags) => {
+const checkTagAlredyExists = (tagToAdd, currentTags) => {
   core.info(`Checking if tag ${tagToAdd} already exists`);
-  if (currentTags.include(tagToAdd)) {
+  if (currentTags.includes(tagToAdd)) {
     core.setFailed(`Tag ${tagToAdd} already exists`);
   }
   core.info(`Tag ${tagToAdd} does not exist`);
@@ -65,7 +65,7 @@ const run = async () => {
   const fileContent = getFile(versionFile);
   const tagToAdd = getVersion(fileContent, versionRegex);
   const currentTags = await getGitTags();
-  checkTag(tagToAdd, currentTags);
+  checkTagAlredyExists(tagToAdd, currentTags);
 
   console.log('DUPA');
 };
