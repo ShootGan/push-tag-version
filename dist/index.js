@@ -24701,6 +24701,14 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 9526:
+/***/ ((module) => {
+
+module.exports = eval("require")("@actions/exec");
+
+
+/***/ }),
+
 /***/ 9491:
 /***/ ((module) => {
 
@@ -26594,6 +26602,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 const fs = __nccwpck_require__(7147);
 const path = __nccwpck_require__(1017);
+const exec = __nccwpck_require__(9526);
 
 const getFile = (versionFile) => {
   try {
@@ -26620,7 +26629,7 @@ const getVersion = (fileContent, versionRegex) => {
   return version;
 };
 
-const run = async () => {
+const run = () => {
   const githubToken = core.getInput('github_token');
   const versionFile = core.getInput('version_file');
   const versionRegex = core.getInput('version_param_regex');
