@@ -52,6 +52,7 @@ const checkTagAlredyExists = (tagToAdd, currentTags) => {
   core.info(`Checking if tag ${tagToAdd} already exists`);
   if (currentTags.includes(tagToAdd)) {
     core.setFailed(`Tag ${tagToAdd} already exists`);
+    throw new Error(`Tag ${tagToAdd} already exists`);
   }
   core.info(`Tag ${tagToAdd} does not exist`);
 };
