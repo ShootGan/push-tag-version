@@ -44,13 +44,8 @@ const getGitTags = async () => {
 
   await exec.exec('git', ['fetch', '--prune', '--unshallow', '--tags'], options);
   await exec.exec('git', ['tag'], options);
-  core.info(`Git tags: ${gitTags}`);
-  core.info(`Git error: ${gitError}`);
-  if (gitError) {
-    core.setFailed(`Error getting git tags: ${gitError}`);
-  }
   core.debug(`Tags: ${gitTags}`);
-  return gitTags;
+  return gitTags.toString();
 };
 
 const checkTag = (tagToAdd, currentTags) => {
