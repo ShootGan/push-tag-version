@@ -27890,7 +27890,7 @@ const checkTag = (tagToAdd, currentTags) => {
   core.info(`Tag ${tagToAdd} does not exist`);
 };
 
-const run = () => {
+const run = async () => {
   const githubToken = core.getInput('github_token');
   const versionFile = core.getInput('version_file');
   const versionRegex = core.getInput('version_param_regex');
@@ -27898,7 +27898,7 @@ const run = () => {
 
   const fileContent = getFile(versionFile);
   const tagToAdd = getVersion(fileContent, versionRegex);
-  const currentTags = getGitTags();
+  const currentTags = await getGitTags();
   checkTag(tagToAdd, currentTags);
 
   console.log('DUPA');
