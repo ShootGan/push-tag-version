@@ -31,13 +31,20 @@ const getVersion = (fileContent, versionRegex) => {
 const getGitTags = async () => {
   core.info('Getting all tags');
   let gitTags = '';
+  let gitError = '';
   const options = {};
   options.listeners = {
     stdout: (data) => {
       gitTags += data.toString();
     },
+    stderr: (data) => {
+      gitError += data.toString();
+    },
   };
-  await exec.exec('git', ['tag']);
+  await exec.exec('git', ['tag'], options);
+  if (gitError) {
+    core.setFailed(`Error getting git tags: ${gitError}`);
+  }
   core.debug(`Tags: ${gitTags}`);
   return gitTags;
 };
