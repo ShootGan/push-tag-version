@@ -27881,8 +27881,7 @@ const getGitTags = async () => {
       gitError += data.toString();
     },
   };
-  //await exec.exec('git', ['tag'], options);
-  await exec.exec('echo', ['dupa'], options);
+  await exec.exec('git', ['tag'], options);
   core.info(`Git tags: ${gitTags}`);
   core.info(`Git error: ${gitError}`);
   if (gitError) {
