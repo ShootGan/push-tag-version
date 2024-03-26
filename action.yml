@@ -1,6 +1,6 @@
 name: 'Add version tag'
 description: 'Creates tag in reposiotry based on version in file'
-author: 'Pawel Nalepka'
+author: 'ShootGan'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN. Optional if you use checkout@v2 action.'
