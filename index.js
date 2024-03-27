@@ -46,7 +46,7 @@ const getGitTags = async () => {
   await exec.exec('git', ['fetch', '--prune', '--unshallow', '--tags'], options);
   await exec.exec('git', ['tag'], options);
   core.debug(`Tags: ${gitTags}`);
-  return gitTags;
+  return gitTags.split('\n');
 };
 
 const configGit = async () => {
