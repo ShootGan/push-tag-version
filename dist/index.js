@@ -27854,7 +27854,7 @@ const getFile = (versionFile) => {
   }
 };
 
-const getVersion = (fileContent, versionRegex) => {
+const getVersion = (fileContent, versionRegex, tagPrefix) => {
   core.info(`Looking for version`);
   core.debug(`Version regex: ${versionRegex}`);
   core.debug(`File content: ${fileContent}`);
@@ -27865,7 +27865,8 @@ const getVersion = (fileContent, versionRegex) => {
     core.setFailed('Version not found in file');
   }
   core.info(`Found version: ${version}`);
-  return version;
+
+  return tagPrefix + version;
 };
 
 const getGitTags = async () => {
@@ -27892,9 +27893,15 @@ const checkTagAlredyExists = (tagToAdd, currentTags) => {
   core.info(`Checking if tag ${tagToAdd} already exists`);
   if (currentTags.includes(tagToAdd)) {
     core.setFailed(`Tag ${tagToAdd} already exists`);
-    throw new Error(`Tag ${tagToAdd} already exists`);
+    throw new Error(`Tag already exists`);
   }
   core.info(`Tag ${tagToAdd} does not exist`);
+};
+
+const createAndPushTag = async (tagToAdd) => {
+  core.info(`Creating and pushing tag ${tagToAdd}`);
+  await exec.exec('git', ['tag', '-a', tagToAdd, '-m', `Release ${tagToAdd}`]);
+  await exec.exec('git', ['push', 'origin', '--tags']);
 };
 
 const run = async () => {
@@ -27904,10 +27911,10 @@ const run = async () => {
   const tagPrefix = core.getInput('tag_prefix');
 
   const fileContent = getFile(versionFile);
-  const tagToAdd = getVersion(fileContent, versionRegex);
+  const tagToAdd = getVersion(fileContent, versionRegex, tagPrefix);
   const currentTags = await getGitTags();
   checkTagAlredyExists(tagToAdd, currentTags);
-
+  await createAndPushTag(tagToAdd);
   console.log('DUPA');
 };
 
