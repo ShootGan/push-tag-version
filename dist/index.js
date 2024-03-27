@@ -27866,7 +27866,7 @@ const getVersion = (fileContent, versionRegex, tagPrefix) => {
   }
   core.info(`Found version: ${version}`);
 
-  return tagPrefix;
+  return version;
 };
 
 const addPrefixandSufix = (version, tagPrefix, tagSuffix) => {

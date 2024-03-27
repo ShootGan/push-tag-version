@@ -15,6 +15,5 @@ jobs:
       - name: Add version tag
         uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           version_file: 'package.json'
           tag_prefix: 'v'
