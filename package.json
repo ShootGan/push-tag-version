@@ -1,6 +1,6 @@
 {
   "name": "push-tag-version",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "repository": "https://github.com/ShootGan/push-tag-version.git",
   "author": "ShootGan",
