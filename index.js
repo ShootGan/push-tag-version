@@ -49,6 +49,13 @@ const getGitTags = async () => {
   return gitTags;
 };
 
+const configGit = async () => {
+  core.info('Configuring git');
+  const gitUser = process.env.GITHUB_ACTOR;
+  await exec.exec('git', ['config', 'user.name', `${gitUser}`]);
+  await exec.exec('git', ['config', 'user.email', `${gitUser}@users.noreply.github.com`]);
+};
+
 const checkTagAlredyExists = (tagToAdd, currentTags) => {
   core.info(`Checking if tag ${tagToAdd} already exists`);
   if (currentTags.includes(tagToAdd)) {
@@ -74,6 +81,7 @@ const run = async () => {
   const tagToAdd = getVersion(fileContent, versionRegex, tagPrefix);
   const currentTags = await getGitTags();
   checkTagAlredyExists(tagToAdd, currentTags);
+  await configGit();
   await createAndPushTag(tagToAdd);
   console.log('DUPA');
 };
