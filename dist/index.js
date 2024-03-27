@@ -27866,7 +27866,11 @@ const getVersion = (fileContent, versionRegex, tagPrefix) => {
   }
   core.info(`Found version: ${version}`);
 
-  return tagPrefix + version;
+  return tagPrefix;
+};
+
+const addPrefixandSufix = (version, tagPrefix, tagSuffix) => {
+  return `${tagPrefix}${version}${tagSuffix}`;
 };
 
 const getGitTags = async () => {
@@ -27915,14 +27919,15 @@ const run = async () => {
   const versionFile = core.getInput('version_file');
   const versionRegex = core.getInput('version_param_regex');
   const tagPrefix = core.getInput('tag_prefix');
+  const tagSuffix = core.getInput('tag_suffix');
 
   const fileContent = getFile(versionFile);
-  const tagToAdd = getVersion(fileContent, versionRegex, tagPrefix);
+  const version = getVersion(fileContent, versionRegex, tagPrefix, tagSuffix);
+  const tagToAdd = addPrefixandSufix(version, tagPrefix, tagSuffix);
   const currentTags = await getGitTags();
   checkTagAlredyExists(tagToAdd, currentTags);
   await configGit();
   await createAndPushTag(tagToAdd);
-  console.log('DUPA');
 };
 
 run();
