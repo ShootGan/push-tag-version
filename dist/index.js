@@ -27912,7 +27912,6 @@ const createAndPushTag = async (tagToAdd) => {
 };
 
 const run = async () => {
-  const githubToken = core.getInput('github_token');
   const versionFile = core.getInput('version_file');
   const versionRegex = core.getInput('version_param_regex');
   const tagPrefix = core.getInput('tag_prefix');
