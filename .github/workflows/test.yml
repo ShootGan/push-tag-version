@@ -17,3 +17,4 @@ jobs:
         with:
           version_file: 'package.json'
           tag_prefix: 'v'
+          tag_suffix: '-beta'
